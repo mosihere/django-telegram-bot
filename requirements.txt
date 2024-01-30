@@ -1,0 +1,9 @@
+asgiref
+Django
+django-filter
+django_debug_toolbar
+djangorestframework
+drf-nested-routers
+mysqlclient==2.1.1
+pytz
+sqlparse
