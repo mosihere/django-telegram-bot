@@ -19,6 +19,14 @@ class LinkList(ReadOnlyModelViewSet):
         queryset = Link.objects.all()
         movie_name = self.request.query_params.get('movie_name')
         if movie_name:
+            new_queryset = queryset.filter(movie__name__iexact=movie_name)
+            print(new_queryset.exists())
+
+        if new_queryset.exists():
+            return new_queryset
+        
+        else:
             queryset = queryset.filter(movie__name__icontains=movie_name)
+            print(queryset.exists())
 
         return queryset
