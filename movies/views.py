@@ -15,7 +15,7 @@ class MovieList(ReadOnlyModelViewSet):
 
         if movie_name:
             queryset = queryset.filter(name__icontains=movie_name)
-            return queryset[:10]
+            return queryset[:15]
         
         return queryset
 
