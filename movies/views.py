@@ -6,11 +6,10 @@ from .serializers import MovieSerializer, LinkSerializer
 
 
 class MovieList(ReadOnlyModelViewSet):
-    queryset = Movie.objects.all()
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        queryset = Movie.objects.all()
+        queryset = Movie.objects.defer('url')
         movie_name = self.request.query_params.get('search')
 
         if movie_name:
