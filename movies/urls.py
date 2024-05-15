@@ -8,6 +8,6 @@ app_name = 'movies'
 
 router = DefaultRouter()
 router.register('links', views.LinkList, basename='links')
-router.register('movies', views.MovieList)
+router.register('movies', views.MovieList, basename='movies')
 
 urlpatterns = router.urls
