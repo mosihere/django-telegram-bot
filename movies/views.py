@@ -14,7 +14,7 @@ class MovieList(ReadOnlyModelViewSet):
 
         if movie_name:
             queryset = queryset.filter(name__icontains=movie_name)
-            return queryset[:15]
+            return queryset[:5]
         
         return queryset
 
@@ -29,11 +29,11 @@ class LinkList(ReadOnlyModelViewSet):
 
         if movie_id:
             queryset = queryset.filter(movie__id=movie_id)
-            return queryset[:15]
+            return queryset[:10]
         
         elif movie_name:
             queryset = queryset.filter(movie__name__icontains=movie_name)
-            return queryset[:15]
+            return queryset[:10]
 
         else:
             return queryset
