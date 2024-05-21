@@ -8,6 +8,6 @@ djangorestframework==3.14.0
 drf-nested-routers==0.93.5
 mysql==0.0.3
 pycparser==2.21
-PyMySQL==1.1.0
+PyMySQL==1.1.1
 pytz==2024.1
 sqlparse==0.4.4
