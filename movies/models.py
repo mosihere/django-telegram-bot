@@ -11,6 +11,11 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['name'])
+        ]
 
 
 class Link(models.Model):
