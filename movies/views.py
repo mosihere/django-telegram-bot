@@ -13,8 +13,8 @@ class MovieList(ReadOnlyModelViewSet):
         movie_name = self.request.query_params.get('search')
 
         if movie_name:
-            queryset = queryset.filter(name__icontains=movie_name)
-            return queryset[:5]
+            queryset = queryset.filter(name__icontains=movie_name).order_by('-published_at')
+            return queryset[:15]
         
         return queryset
 
