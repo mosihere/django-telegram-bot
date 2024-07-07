@@ -25,15 +25,9 @@ class LinkList(ReadOnlyModelViewSet):
     def get_queryset(self):
         queryset = Link.objects.select_related('movie').all()
         movie_id = self.request.query_params.get('movie_id')
-        movie_name = self.request.query_params.get('movie_name')
 
         if movie_id:
             queryset = queryset.filter(movie__id=movie_id)
             return queryset[:10]
         
-        elif movie_name:
-            queryset = queryset.filter(movie__name__icontains=movie_name)
-            return queryset[:10]
-
-        else:
-            return queryset
+        return queryset
