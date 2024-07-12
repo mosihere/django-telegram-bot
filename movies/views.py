@@ -14,7 +14,7 @@ class MovieList(ReadOnlyModelViewSet):
 
         if movie_name:
             queryset = queryset.filter(name__icontains=movie_name).order_by('-published_at')
-            return queryset[:15]
+            return queryset[:6]
         
         return queryset
 
