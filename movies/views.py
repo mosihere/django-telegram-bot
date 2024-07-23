@@ -28,6 +28,6 @@ class LinkList(ReadOnlyModelViewSet):
 
         if movie_id:
             queryset = queryset.filter(movie__id=movie_id)
-            return queryset[:10]
+            return queryset[:20]
         
         return queryset
