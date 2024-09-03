@@ -9,7 +9,7 @@ class MovieList(ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        queryset = Movie.objects.only('name', 'published_at')
+        queryset = Movie.objects.only('name', 'published_at', 'poster_url')
         movie_name = self.request.query_params.get('search')
 
         if movie_name:
