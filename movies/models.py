@@ -9,13 +9,12 @@ class Movie(models.Model):
     published_at = models.IntegerField(blank=True, null=True)
     poster_url = models.CharField(max_length=255, null=True)
 
-
     def __str__(self):
         return self.name
     
     class Meta:
         indexes = [
-            models.Index(fields=['name', 'poster_url'])
+            models.Index(fields=['name'])
         ]
 
 
