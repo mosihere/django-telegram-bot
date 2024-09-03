@@ -11,7 +11,7 @@ Django==5.0.8
 django-debug-toolbar==4.3.0
 django-filter==23.5
 django-redis==5.4.0
-djangorestframework==3.14.0
+djangorestframework==3.15.2
 drf-nested-routers==0.93.5
 Flask==3.0.3
 Flask-Cors==4.0.1
