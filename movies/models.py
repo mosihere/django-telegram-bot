@@ -15,7 +15,7 @@ class Movie(models.Model):
     
     class Meta:
         indexes = [
-            models.Index(fields=['name'])
+            models.Index(fields=['name', 'poster_url'])
         ]
 
 
