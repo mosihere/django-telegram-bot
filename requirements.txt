@@ -6,7 +6,7 @@ cffi==1.16.0
 charset-normalizer==3.3.2
 click==8.1.7
 ConfigArgParse==1.7
-cryptography==42.0.4
+cryptography==43.0.1
 Django==5.0.8
 django-debug-toolbar==4.3.0
 django-filter==23.5
