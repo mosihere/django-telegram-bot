@@ -23,7 +23,7 @@ class LinkList(ReadOnlyModelViewSet):
     serializer_class = LinkSerializer
 
     def get_queryset(self):
-        queryset = Link.objects.select_related('movie').all()
+        queryset = Link.objects.select_related('movie').only('id', 'link', 'quality', 'codec', 'movie__name', 'movie__published_at')
         movie_id = self.request.query_params.get('movie_id')
 
         if movie_id:
