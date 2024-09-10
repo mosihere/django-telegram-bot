@@ -26,7 +26,7 @@ class Link(models.Model):
 
 
 class User(models.Model):
-    telegram_id = models.CharField(max_length=100, unique=True)
+    telegram_id = models.BigIntegerField(unique=True)
     username = models.CharField(max_length=100, null=True)
     first_name = models.CharField(max_length=100, null=True)
     last_name = models.CharField(max_length=100, null=True)
