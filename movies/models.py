@@ -19,7 +19,7 @@ class Movie(models.Model):
 
 
 class Link(models.Model):
-    link = models.CharField(max_length=255)
+    link = models.CharField(max_length=255, unique=True)
     quality = models.CharField(max_length=10)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='links')
     codec = models.CharField(max_length=4)
