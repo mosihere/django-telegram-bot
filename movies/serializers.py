@@ -1,25 +1,19 @@
 from rest_framework import serializers
-from .models import Movie, Link
-
 
 
 
         
-class MovieSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Movie
-        fields = ['id', 'name', 'published_at', 'poster_url']        
+class MovieSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    name = serializers.CharField(max_length=255)
+    published_at = serializers.IntegerField()
+    poster_url = serializers.CharField(max_length=255)
 
 
-class SimpleMovieSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Movie
-        fields = ['name', 'published_at']
-
-
-class LinkSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Link
-        fields = ['id', 'link', 'quality', 'codec', 'movie']
-        
-    movie = SimpleMovieSerializer()
+class LinkSerializer(serializers.Serializer):   
+    id = serializers.IntegerField()
+    link = serializers.CharField(max_length=255)
+    quality = serializers.CharField(max_length=10)
+    codec = serializers.CharField(max_length=4)
+    movie_name = serializers.CharField(source='movie__name')
+    movie_published_at = serializers.IntegerField(source='movie__published_at')

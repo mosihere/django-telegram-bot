@@ -9,7 +9,7 @@ class MovieList(ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        queryset = Movie.objects.only('name', 'published_at', 'poster_url')
+        queryset = Movie.objects.values('id', 'name', 'published_at', 'poster_url')
         movie_name = self.request.query_params.get('search')
 
         if movie_name:
@@ -23,7 +23,7 @@ class LinkList(ReadOnlyModelViewSet):
     serializer_class = LinkSerializer
 
     def get_queryset(self):
-        queryset = Link.objects.select_related('movie').only('id', 'link', 'quality', 'codec', 'movie__name', 'movie__published_at')
+        queryset = Link.objects.values('id', 'link', 'quality', 'codec', 'movie__name', 'movie__published_at')
         movie_id = self.request.query_params.get('movie_id')
 
         if movie_id:
