@@ -8,6 +8,7 @@ class Movie(models.Model):
     url = models.CharField(max_length=255)
     published_at = models.IntegerField(blank=True, null=True)
     poster_url = models.CharField(max_length=255, null=True)
+    subtitle_url = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         return self.name
