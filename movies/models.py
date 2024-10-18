@@ -10,6 +10,7 @@ class Movie(models.Model):
     trending = models.BooleanField(default=False)
     poster_url = models.CharField(max_length=255, null=True)
     subtitle_url = models.CharField(max_length=255, null=True)
+    is_series = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
