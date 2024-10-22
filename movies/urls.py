@@ -7,7 +7,9 @@ app_name = 'movies'
 
 
 router = DefaultRouter()
-router.register('links', views.LinkList, basename='links')
-router.register('movies', views.MovieList, basename='movies')
+router.register('links', views.LinkViewSet, basename='link')
+router.register('movies', views.MovieViewSet, basename='movie')
+router.register('users', views.UserViewSet, basename='user')
+router.register('user-searches', views.UserSearchViewSet, basename='usersearch')
 
 urlpatterns = router.urls

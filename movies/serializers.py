@@ -1,21 +1,44 @@
 from rest_framework import serializers
-
+from .models import User, UserSearch, Link, Movie
 
 
         
-class MovieSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
-    name = serializers.CharField(max_length=255)
-    published_at = serializers.IntegerField()
-    poster_url = serializers.CharField(max_length=255)
-    subtitle_url = serializers.CharField(max_length=255)
+class MovieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ['id', 'name', 'poster_url', 'subtitle_url']
+        read_only_fields = ['id']
 
 
-class LinkSerializer(serializers.Serializer):   
-    id = serializers.IntegerField()
-    link = serializers.CharField(max_length=255)
-    quality = serializers.CharField(max_length=10)
-    codec = serializers.CharField(max_length=4)
-    name = serializers.CharField(source='movie__name')
-    published_at = serializers.IntegerField(source='movie__published_at')
-    subtitle_url = serializers.CharField(max_length=255, source='movie__subtitle_url')
+class LinkSerializer(serializers.ModelSerializer):
+    movie_name = serializers.SerializerMethodField()
+    movie_published_at = serializers.SerializerMethodField()
+    movie_subtitle_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Link
+        fields = ['id', 'link', 'quality', 'codec', 'movie_name', 'movie_published_at', 'movie_subtitle_url']
+        read_only_fields = ['id']
+
+    def get_movie_name(self, obj):
+        return obj.movie.name
+
+    def get_movie_published_at(self, obj):
+        return obj.movie.published_at
+
+    def get_movie_subtitle_url(self, obj):
+        return obj.movie.subtitle_url
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id' ,'telegram_id', 'username', 'first_name', 'last_name', 'created_at', 'last_use']
+        read_only_fields = ['id', 'created_at']
+
+
+class UserSearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSearch
+        fields = ['id' ,'user', 'query', 'timestamp']
+        read_only_fields = ['id', 'timestamp']
