@@ -6,7 +6,7 @@ from .models import User, UserSearch, Link, Movie
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = ['id', 'name', 'poster_url', 'subtitle_url']
+        fields = ['id', 'name', 'url', 'poster_url', 'subtitle_url']
         read_only_fields = ['id']
 
 
