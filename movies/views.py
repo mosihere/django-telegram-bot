@@ -1,7 +1,7 @@
 from .models import Movie, Link, User, UserSearch
 from rest_framework.viewsets import ModelViewSet
 from .serializers import MovieSerializer, LinkSerializer, UserSerializer, UserSearchSerializer
-
+from .throttling import TelegramUserThrottle
 
 
 
@@ -21,7 +21,8 @@ class MovieViewSet(ModelViewSet):
 
 class LinkViewSet(ModelViewSet):
     serializer_class = LinkSerializer
-
+    throttle_classes = [TelegramUserThrottle]
+    
     def get_queryset(self):
         queryset = Link.objects.select_related('movie').only('id', 'link', 'quality', 'codec','movie__name', 'movie__published_at', 'movie__subtitle_url')
         movie_id = self.request.query_params.get('movie_id')

@@ -139,9 +139,6 @@ INTERNAL_IPS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_THROTTLE_CLASSES': [
-        'movies.throttling.TelegramUserThrottle',
-    ],
     'DEFAULT_THROTTLE_RATES': {
         'telegram_user': '10/min',
     }
