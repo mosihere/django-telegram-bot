@@ -137,3 +137,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'movies.throttling.TelegramUserThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'telegram_user': '10/min',
+    }
+}
