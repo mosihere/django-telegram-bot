@@ -141,7 +141,7 @@ INTERNAL_IPS = [
 REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'movie_link_requests': '10/min',
-        'movie_search': '15/min',
+        'movie_search': '10/min',
     }
 }
 
