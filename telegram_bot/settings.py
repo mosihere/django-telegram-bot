@@ -139,6 +139,9 @@ INTERNAL_IPS = [
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
     'DEFAULT_THROTTLE_RATES': {
         'movie_link_requests': '10/min',
         'movie_search': '10/min',
