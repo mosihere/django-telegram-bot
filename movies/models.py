@@ -30,9 +30,9 @@ class Link(models.Model):
 
 class User(models.Model):
     telegram_id = models.BigIntegerField(unique=True)
-    username = models.CharField(max_length=100, null=True, blank=True)
-    first_name = models.CharField(max_length=100, null=True, blank=True)
-    last_name = models.CharField(max_length=100, null=True, blank=True)
+    username = models.CharField(max_length=100, null=True)
+    first_name = models.CharField(max_length=100, null=True)
+    last_name = models.CharField(max_length=100, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     last_use = models.DateTimeField(auto_now=True)
 
