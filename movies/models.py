@@ -11,6 +11,7 @@ class Movie(models.Model):
     poster_url = models.CharField(max_length=255, null=True)
     subtitle_url = models.CharField(max_length=255, null=True)
     is_series = models.BooleanField(default=False)
+    trailer_url = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         return self.name
