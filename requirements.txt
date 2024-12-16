@@ -1,3 +1,4 @@
+python-decouple==3.8
 asgiref==3.7.2
 blinker==1.8.2
 Brotli==1.1.0
@@ -25,7 +26,6 @@ Jinja2==3.1.4
 locust==2.29.1
 MarkupSafe==2.1.5
 msgpack==1.0.8
-mysql==0.0.3
 psutil==6.0.0
 pycparser==2.21
 PyMySQL==1.1.1
