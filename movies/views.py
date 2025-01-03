@@ -10,7 +10,7 @@ class MovieViewSet(ModelViewSet):
     throttle_classes = [MovieSearchThrottle]
 
     def get_queryset(self):
-        queryset = Movie.objects.only('id', 'name', 'published_at', 'poster_url', 'subtitle_url')
+        queryset = Movie.objects.only('id','url', 'name', 'published_at', 'poster_url', 'subtitle_url', 'trailer_url')
         movie_name = self.request.query_params.get('search')
 
         if movie_name:
@@ -25,9 +25,8 @@ class LinkViewSet(ModelViewSet):
     throttle_classes = [MovieLinkThrottle]
     
     def get_queryset(self):
-        queryset = Link.objects.select_related('movie').only('id', 'link', 'quality', 'codec','movie__name', 'movie__published_at', 'movie__subtitle_url')
+        queryset = Link.objects.select_related('movie').only('id', 'link', 'quality', 'codec','movie__name', 'movie__published_at', 'movie__subtitle_url', 'movie__trailer_url')
         movie_id = self.request.query_params.get('movie_id')
-
         if movie_id:
             queryset = queryset.filter(movie__id=movie_id)
             return queryset[:20]
